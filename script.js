@@ -214,6 +214,6 @@ function InitialAnimation() {
 
 InitialAnimationSetting();
 InitialAnimation();
-setTimeout(()=>{
-mouseMoveAnimation();
-},1800);
+setTimeout(() => {
+  mouseMoveAnimation();
+}, 1800);
