@@ -59,7 +59,7 @@ html, body {
 .header {
     height: 100%;
     width: 100%;
-    font-size: 55px;
+    font-size: 50px;
     text-align: center;
     display: flex;
     align-items: center;
@@ -153,4 +153,22 @@ html, body {
     position: absolute;
     top: 0;
     left: 0;
+}
+.image-top-left-text,.image-top-right-text,.image-bottom-left-text,.image-bottom-right-text{
+    width: 100%;
+    position: absolute;
+    top:76%;
+    left:45%;
+    opacity: 0;
+}
+.image-top-left-text h1,.image-top-right-text h1,.image-bottom-left-text h1,.image-bottom-right-text h1{
+    font-size: 40px;
+    text-transform: uppercase;
+    line-height: 50px;
+}
+.image-top-left-text h2,.image-top-right-text h2,.image-bottom-left-text h2,.image-bottom-right-text h2{
+    font-size: 15px;
+    font-family: subHeader;
+    font-weight: 100;
+    margin-top:10px;
 }

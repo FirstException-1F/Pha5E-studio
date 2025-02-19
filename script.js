@@ -1,10 +1,16 @@
-function animateElementPosition(elem, left, top, duration = 0.6, ease = "power2.out") {
+function animateElementPosition(
+  elem,
+  left,
+  top,
+  duration = 0.6,
+  ease = "power2.out"
+) {
   gsap.to(elem, {
     left: typeof left === "number" ? left + "px" : left,
     top: typeof top === "number" ? top + "px" : top,
     duration: duration,
     ease: ease,
-    overwrite: "auto"
+    overwrite: "auto",
   });
 }
 
@@ -25,28 +31,49 @@ function setWrapperZIndex(wrapper, zIndex) {
 }
 
 function fadeOutAllImagesExcept(mainImg) {
-  const otherImgs = Array.from(document.querySelectorAll("img")).filter(img => img !== mainImg);
-  otherImgs.forEach(img => {
+  const otherImgs = Array.from(document.querySelectorAll("img")).filter(
+    (img) => img !== mainImg
+  );
+  otherImgs.forEach((img) => {
     gsap.to(img, {
       opacity: 0,
       duration: 0.2,
-      ease: "power1.out"
+      ease: "power1.out",
     });
   });
 }
 
 function fadeInAllImages() {
   const imgs = document.querySelectorAll("img");
-  imgs.forEach(img => {
+  imgs.forEach((img) => {
     gsap.to(img, {
       opacity: 1,
       duration: 0.2,
-      ease: "power1.in"
+      ease: "power1.in",
     });
   });
 }
 
-function MouseMoveHelper(imageWrapper, image, wrapperToMoveAhead, initialPosition) {
+function fadeInText(mainText) {
+  gsap.to(mainText, {
+    opacity: 1,
+    duration: 0.2,
+    ease: "power1.out",
+  });
+}
+function fadeOutText(mainText) {
+  gsap.to(mainText, {
+    opacity: 0,
+    duration: 0.2,
+    ease: "power1.out",
+  });
+}
+function MouseMoveHelper(
+  imageWrapper,
+  image,
+  wrapperToMoveAhead,
+  initialPosition
+) {
   let lastEvent = null;
   let isTicking = false;
 
@@ -60,7 +87,9 @@ function MouseMoveHelper(imageWrapper, image, wrapperToMoveAhead, initialPositio
     setHeaderHoverStyle();
     setWrapperZIndex(wrapperToMoveAhead, 99);
     const mainImg = image.querySelector("img");
+    const mainText = image.querySelector("div");
     fadeOutAllImagesExcept(mainImg);
+    fadeInText(mainText);
   }
 
   imageWrapper.addEventListener("mousemove", (event) => {
@@ -75,10 +104,18 @@ function MouseMoveHelper(imageWrapper, image, wrapperToMoveAhead, initialPositio
   });
 
   imageWrapper.addEventListener("mouseleave", () => {
-    animateElementPosition(image, initialPosition.left, initialPosition.top, 2, "expo.out");
+    animateElementPosition(
+      image,
+      initialPosition.left,
+      initialPosition.top,
+      2,
+      "expo.out"
+    );
     resetHeaderStyle();
     setWrapperZIndex(wrapperToMoveAhead, 2);
     fadeInAllImages();
+    const mainText = image.querySelector("div");
+    fadeOutText(mainText);
   });
 }
 
@@ -88,29 +125,29 @@ function mouseMoveAnimation() {
       overlay: "first-overlay",
       image: "image-top-left-container",
       wrapper: "image-top-left-wrapper",
-      initial: { left: "188.512px", top: "140px" }
+      initial: { left: "188.512px", top: "140px" },
     },
     {
       overlay: "second-overlay",
       image: "image-top-right-container",
       wrapper: "image-top-right-wrapper",
-      initial: { left: "288.512px", top: "140px" }
+      initial: { left: "288.512px", top: "140px" },
     },
     {
       overlay: "third-overlay",
       image: "image-bottom-left-container",
       wrapper: "image-bottom-left-wrapper",
-      initial: { left: "101.35px", top: "30.4px" }
+      initial: { left: "101.35px", top: "30.4px" },
     },
     {
       overlay: "fourth-overlay",
       image: "image-bottom-right-container",
       wrapper: "image-bottom-right-wrapper",
-      initial: { left: "151.35px", top: "-10px" }
-    }
+      initial: { left: "151.35px", top: "-10px" },
+    },
   ];
 
-  AllImagesInformation.forEach(Image => {
+  AllImagesInformation.forEach((Image) => {
     MouseMoveHelper(
       selectElement(Image.overlay),
       selectElement(Image.image),
@@ -126,13 +163,13 @@ function selectElement(name) {
 
 function InitialAnimationSetting() {
   const header = selectElement("header");
-  Array.from(header.children).forEach(child => {
+  Array.from(header.children).forEach((child) => {
     const h1inside = child.querySelector("h1");
     if (h1inside) {
       h1inside.style.transform = "translateY(300%)";
       h1inside.style.opacity = "0";
     }
-    child.style.height = "110px";
+    child.style.height = "105px";
     child.style.overflow = "hidden";
   });
 }
@@ -147,7 +184,7 @@ function InitialAnimation() {
         opacity: 1,
         duration: 0.8,
         delay: 0.12 * idx,
-        ease: "power2.out"
+        ease: "power2.out",
       });
     }
   });
@@ -161,20 +198,22 @@ function InitialAnimation() {
     { elem: contentFirstWrappers[0], delay: 0.6 },
     { elem: contentSecondWrappers[0], delay: 1.1 },
     { elem: contentFirstWrappers[1], delay: 0.9 },
-    { elem: contentSecondWrappers[1], delay: 0.7 }
+    { elem: contentSecondWrappers[1], delay: 0.7 },
   ];
 
-  animations.forEach(item => {
+  animations.forEach((item) => {
     gsap.to(item.elem, {
       scale: 1,
       opacity: 1,
       delay: item.delay,
       duration: 1,
-      ease: "power2.out"
+      ease: "power2.out",
     });
   });
 }
 
 InitialAnimationSetting();
 InitialAnimation();
+setTimeout(()=>{
 mouseMoveAnimation();
+},1800);
