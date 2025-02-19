@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+@font-face {
+    font-family: subHeader;
+    src: url("/public/AreaNormal-Semibold.woff");
+}
+
+@font-face {
+    font-family: Header;
+    src: url("/public/DrukWide-Bold-Web.woff");
+}
+
+.nav-right {
+    font-family: subHeader;
+    display: flex;
+    gap: 2vw;
+    font-size: 10px;
+}
+
+.nav-left, .hero {
+    font-family: Header;
+}
+
+.main {
+    height: 100%;
+    width: 100%;
+    color: white;
+    background: #212121;
+}
+
+.navbar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+
+.hero {
+    height: calc(100vh - 80px);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header {
+    height: 100%;
+    width: 100%;
+    font-size: 55px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 5;
+}
+
+.content {
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.content-first, .content-second {
+    height: 50%;
+    width: 100%;
+}
+
+.four-overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: 999;
+    display: flex;
+    gap: 80px;
+}
+
+.first-wrapper, .second-wrapper {
+    height: 50%;
+    width: 100%;
+}
+
+.first-overlay, .second-overlay, .third-overlay, .fourth-overlay {
+    height: 90%;
+    width: 100%;
+}
+
+.first-overlay{
+    margin-bottom: 50px;
+}
+.third-overlay{
+    margin-bottom: 50px;
+}
+
+.image-top-left-wrapper, .image-top-right-wrapper, .image-bottom-left-wrapper, .image-bottom-right-wrapper {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    scale: 0.5;
+    opacity: 0;
+    transform-origin: center center;
+}
+
+
+.image-top-left-container, .image-top-right-container, .image-bottom-left-container, .image-bottom-right-container {
+    height: 225px;
+    width: 350px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.image-top-left-container {
+    left: 188.512px;
+    top: 140px;
+}
+
+.image-top-right-container {
+    left: 288.512px;
+    top: 140.4px;
+}
+
+.image-bottom-left-container {
+    left: 101.35px;
+    top: 30.4px;
+}
+
+.image-bottom-right-container {
+    left: 151.35px;
+    top: -10px;
+}
+
+.image-top-left-container img, .image-top-right-container img, .image-bottom-left-container img, .image-bottom-right-container img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
